@@ -51,8 +51,11 @@ syntax [, obs(integer 1) mu(real 0) sigma(real 1) ]
     gen y  = 3 + 2*x + u 
     reg y x 
     end 
-
-	
+// Vamos pega uma amostra com 10 mil observacoes, com x e u seguindo uma normal (cada vez que rodarmos os valores 
+//serao diferentes pois nao especificamos uma seed). A ideia e que na media as estimativas serao igual ao beta populacional (2)
+simulate beta=_b[x], reps(1000): ols
+su 
+hist beta
 
 ** reganat.do -reganat- is a user-created package by @Filoso2013. Utilizado para demonstrar a importancia do teorema FWL
 ssc install reganat, replace
